@@ -1,0 +1,83 @@
+.navbar {
+  height: 13vh;
+  width: 100%;
+  display: flex;
+  position: absolute;
+  top: 0;
+  z-index: 999;
+  background: transparent;
+  pointer-events: auto;
+}
+
+.nav-left {
+  height: 100%;
+  width: calc(100% / 3);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 10vh;
+}
+
+.nav-logo {
+  text-decoration: none;
+  color: white;
+  font-size: 33px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nav-logo:hover {
+  opacity: 0.8;
+}
+
+.nav-center {
+  height: 100%;
+  width: calc(100% / 3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-links {
+  display: flex;
+  gap: 10px;
+  border: 0.2px solid rgba(255, 255, 255, 0.353);
+  border-radius: 50px;
+  padding: 5px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 15px 30px;
+  border-radius: 50px;
+  pointer-events: auto;
+}
+
+.nav-link.active {
+  color: white;
+  font-weight: 500;
+  opacity: 1;
+}
+
+.nav-link:hover {
+  background: #231e82;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow:
+    0 0px 10px 10px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 0 3px 3px rgba(255, 255, 255, 0.219);
+}
+
+.nav-right {
+  height: 100%;
+  width: calc(100% / 3);
+}
+

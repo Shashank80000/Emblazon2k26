@@ -155,27 +155,17 @@ export default function Home() {
     ScrollTrigger.refresh();
 
     return () => {
-      ScrollTrigger.getAll().forEach((st) => st.kill());
+      ScrollTrigger.getAll().forEach((st) => st.kill(true));
+      gsap.globalTimeline.clear();
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+      document.body.style.width = '';
+      document.documentElement.style.width = '';
     };
   }, []);
 
   return (
     <>
-      <nav>
-        <div className="nav-left">
-          <a href="#">Mayank.</a>
-        </div>
-        <div className="nav-center">
-          <div className="main-links">
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Works</a>
-            <a className="contact" href="#">Contact</a>
-          </div>
-        </div>
-        <div className="nav-right"></div>
-      </nav>
-
       <div className="section1">
         <img src="https://via.placeholder.com/1200x1000?text=Placeholder" alt="" />
         <div className="content">

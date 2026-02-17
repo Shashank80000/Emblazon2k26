@@ -1,4 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import ScrollToTop from './component/ScrollToTop';
+import Navbar from './component/Navbar/navbar';
 import Home from './component/Home/home';
 import About from './component/About/about';
 import Events from './component/Events/events';
@@ -9,6 +11,8 @@ import Sponsors from './component/sponsors/sponsors';
 function App() {
   return (
     <Router>
+      <ScrollToTop />
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
