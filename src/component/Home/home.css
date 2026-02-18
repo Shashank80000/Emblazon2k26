@@ -829,3 +829,396 @@ body {
   color: #fff;
   font-size: 27px;
 }
+
+/* ====== MOBILE ONLY ====== */
+@media (max-width: 768px) {
+  /* ---- Global overflow containment ---- */
+  /* NOTE: Do NOT apply overflow-x:hidden to pinned containers
+     (.main-blank, .section4, .section7, .section1) – it breaks
+     ScrollTrigger pin-spacer behavior on mobile. */
+  .section2,
+  .section3,
+  .section5,
+  .section6,
+  .section8,
+  .section9,
+  .forheading {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+
+  /* ---- GPU acceleration for animated elements ---- */
+  .content h1,
+  .section1 p,
+  .section1 img,
+  .content1,
+  .paragraph1,
+  .paragraph2,
+  .para p,
+  .mid-one,
+  .mid-two,
+  #creativehead,
+  #Branding,
+  #Design,
+  #Marketing,
+  .card,
+  .pricecart .left,
+  .pricecart .right {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  /* ---- Section 1 – Hero ---- */
+  .section1 img {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+  }
+
+  .cir {
+    height: 20vh;
+    width: 20vh;
+    filter: blur(60px);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 4px 20px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    width: 92%;
+    padding-top: 12%;
+  }
+
+  .content h1 {
+    font-size: clamp(3rem, 15vw, 6rem);
+    margin-top: 0;
+  }
+
+  .content h4 {
+    font-size: 16px;
+  }
+
+  .content li {
+    font-size: 14px;
+  }
+
+  .section1 p {
+    font-size: 14px;
+    text-align: center;
+    padding: 0 5vw;
+  }
+
+  /* ---- Section 2 – Profile ---- */
+  .content1 {
+    gap: 30px;
+    padding: 8% 6%;
+  }
+
+  .content1 h4 {
+    font-size: 18px;
+  }
+
+  .content1 h1 {
+    font-size: clamp(1.4rem, 5.5vw, 2.2rem);
+  }
+
+  .para {
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .para p {
+    width: 100%;
+    font-size: 15px;
+  }
+
+  /* ---- Section 3 – Expertise ---- */
+  .section3 {
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .section3 .top {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+    padding-top: 6%;
+    height: auto;
+    padding-bottom: 4%;
+  }
+
+  .section3 .top h5 {
+    font-size: 16px;
+    margin-left: 0;
+  }
+
+  .section3 .top h1 {
+    font-size: clamp(1.4rem, 6.5vw, 2.2rem);
+  }
+
+  .section3 .mid {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .mid-one,
+  .mid-two {
+    width: 100vw;
+    height: 35vh;
+    transform: translateX(-100%);
+    background-size: cover;
+    background-position: center;
+  }
+
+  .paras {
+    flex-direction: column;
+    gap: 12px;
+    padding: 10px 5vw;
+  }
+
+  .paras p {
+    font-size: 13px;
+  }
+
+  #paras1 {
+    width: 100%;
+  }
+
+  /* ---- Creative heading ---- */
+  #creativehead {
+    font-size: clamp(2.5rem, 11vw, 5rem);
+    height: 20vh;
+  }
+
+  /* ---- Section 4 – Branding / Design / Marketing ---- */
+  .section4-cont {
+    align-items: center;
+    text-align: center;
+  }
+
+  .section4-cont h2 {
+    font-size: clamp(2rem, 10vw, 3.8rem);
+    width: auto;
+    text-align: center;
+  }
+
+  #Branding,
+  #Design,
+  #Marketing {
+    transform: translateX(100%);
+  }
+
+  /* ---- Cards section ---- */
+  .main-blank {
+    height: 100vh;
+    perspective: 400px;
+  }
+
+  .card {
+    width: 92%;
+    height: 75vh;
+    padding-top: 30%;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .card h1 {
+    font-size: clamp(2.5rem, 12vw, 4.5rem);
+  }
+
+  .main-blank h6 {
+    font-size: 1.1rem;
+    left: 5%;
+  }
+
+  .fordate {
+    padding: 0 12px 8px 12px;
+  }
+
+  .fordate p {
+    font-size: 13px;
+  }
+
+  /* ---- Section 6 – Testimonials ---- */
+  .section6 {
+    height: auto;
+    padding: 8vh 0;
+  }
+
+  .section6 h3 {
+    font-size: 20px;
+  }
+
+  .prof {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    height: auto;
+    padding: 0 5vw;
+  }
+
+  .cardsp {
+    width: 88vw;
+    height: auto;
+    padding: 22px 14px;
+    box-shadow: none;
+  }
+
+  .cardsp h3 {
+    margin-left: 0;
+    word-spacing: 5px;
+    font-size: 16px;
+  }
+
+  .cardsp p {
+    font-size: 14px;
+  }
+
+  /* ---- Section 7 – Pricing ---- */
+  .section7 {
+    height: auto;
+    padding-top: 10vh;
+    gap: 30px;
+  }
+
+  .section7 h3 {
+    font-size: 20px;
+  }
+
+  .section7 p {
+    font-size: 15px;
+    text-align: center;
+    padding: 0 5vw;
+  }
+
+  .pricecart {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    height: auto;
+    padding: 5vw;
+  }
+
+  .pricecart .left,
+  .pricecart .right {
+    width: 92%;
+    height: auto;
+    padding: 25px;
+    filter: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .left h1,
+  .right h1 {
+    font-size: 32px;
+  }
+
+  .left p,
+  .right p {
+    font-size: 14px;
+  }
+
+  .list {
+    height: auto;
+    gap: 18px;
+  }
+
+  /* ---- Section 8 – Why Work With Us ---- */
+  .section8 {
+    height: auto;
+    padding-top: 8vh;
+    gap: 25px;
+  }
+
+  .section8 h2 {
+    font-size: 20px;
+  }
+
+  .container {
+    flex-direction: column;
+    padding: 4vw;
+    gap: 20px;
+    height: auto;
+  }
+
+  .container .lft,
+  .container .rht {
+    width: 100%;
+    height: auto;
+  }
+
+  .container .lft h1 {
+    font-size: 24px;
+  }
+
+  .container .lft p {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .container .lft h2 {
+    font-size: 18px;
+  }
+
+  .rht .img {
+    width: 100%;
+    height: 35vh;
+  }
+
+  .imgbottom p {
+    font-size: 15px;
+  }
+
+  /* ---- Section 9 – Footer / CTA ---- */
+  .section9 .top h1 {
+    font-size: clamp(2rem, 10vw, 3.5rem);
+  }
+
+  .section9 .top button {
+    padding: 14px 32px;
+    font-size: 15px;
+  }
+
+  .section9 .bottom h1 {
+    font-size: clamp(2.5rem, 14vw, 5rem);
+  }
+
+  .section9 .bottom {
+    height: auto;
+    min-height: 40vh;
+  }
+
+  .footercontent {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    gap: 10px;
+    padding: 10px 0;
+  }
+
+  .footercontent .left {
+    width: 100%;
+    justify-content: center;
+    padding-left: 0;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .footercontent .left a {
+    font-size: 14px;
+  }
+
+  .footercontent .rht {
+    width: 100%;
+    justify-content: center;
+    padding-right: 0;
+  }
+}

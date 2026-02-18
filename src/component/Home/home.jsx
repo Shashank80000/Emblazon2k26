@@ -4,6 +4,10 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './home.css';
 
 gsap.registerPlugin(ScrollTrigger);
+ScrollTrigger.config({ ignoreMobileResize: true });
+if (window.matchMedia('(max-width: 768px)').matches) {
+  gsap.ticker.lagSmoothing(1000, 16);
+}
 
 export default function Home() {
   useEffect(() => {
@@ -12,12 +16,14 @@ export default function Home() {
     }
     window.scrollTo(0, 0);
 
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: '.section1',
         start: '50% 50%',
         end: '300% 50%',
-        scrub: 1,
+        scrub: isMobile ? 0.5 : 1,
         pin: true,
       },
     });
@@ -35,7 +41,7 @@ export default function Home() {
         trigger: '.section2',
         start: '10% 90%',
         end: '60% 60%',
-        scrub: 3,
+        scrub: isMobile ? 1.5 : 3,
       },
     });
 
@@ -50,7 +56,7 @@ export default function Home() {
         trigger: '.section3',
         start: '25% 80%',
         end: '80% 80%',
-        scrub: 3,
+        scrub: isMobile ? 1.5 : 3,
       },
     });
 
@@ -95,7 +101,7 @@ export default function Home() {
         trigger: '.main-blank',
         start: '50% 50%',
         end: '200% 60%',
-        scrub: 2,
+        scrub: isMobile ? 1 : 2,
         pin: true,
       },
     });
@@ -144,7 +150,7 @@ export default function Home() {
         start: '65% 50%',
         end: '110% 50%',
         pin: true,
-        scrub: 3,
+        scrub: isMobile ? 1.5 : 3,
       },
     });
 
@@ -167,7 +173,7 @@ export default function Home() {
   return (
     <>
       <div className="section1">
-        <img src="https://via.placeholder.com/1200x1000?text=Placeholder" alt="" />
+        <img src="https://via.placeholder.com/1200x1000?text=Placeholder" alt="" loading="lazy" decoding="async" />
         <div className="content">
           <h4>Design Agency®</h4>
           <h1>Creative</h1>
