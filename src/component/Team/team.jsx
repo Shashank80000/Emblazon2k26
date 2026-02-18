@@ -1,4 +1,3 @@
-import React from 'react'
 import './OrganisingCommitee.css'
 import DotGrid from '../DotGrid'
 

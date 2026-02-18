@@ -70,48 +70,81 @@ body {
 .section1 img {
   position: absolute;
   top: 0%;
+  left: 0;
+  width: 100%;
   height: 100vh;
+  object-fit: cover;
   mix-blend-mode: luminosity;
-  opacity: 1;
+  opacity: 0.4;
+  z-index: 1;
 }
 
 .content {
   color: white;
   display: flex;
-  align-items: start;
-  padding-top: 5%;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  position: absolute;
-  gap: 30px;
-  top: 10%;
-  height: 60vh;
-  width: 80%;
+  position: relative;
+  z-index: 2;
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 2rem;
+  text-align: center;
+}
+
+.content h4 {
+  font-size: 25px;
+  font-weight: 300;
+  letter-spacing: 2px;
+  opacity: 0.9;
+  margin-bottom: 10px;
 }
 
 .content h1 {
-  margin-top: 9%;
   font-size: 12rem;
   font-family: font2;
   font-weight: 400;
   scale: 1;
   opacity: 1;
+  margin: 0;
+  line-height: 1;
+  text-align: center;
+  letter-spacing: -2px;
 }
 
-.content h4 {
-  font-size: 25px;
+.content ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  list-style: none;
+  margin-top: 20px;
+  padding: 0;
 }
 
 .content li {
   font-size: 18px;
+  font-weight: 300;
+  opacity: 0.85;
+  letter-spacing: 1px;
 }
 
 .section1 p {
   position: absolute;
-  top: 90%;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
   color: white;
-  margin-left: 0%;
-  opacity: 0.5;
+  opacity: 0.6;
   scale: 0;
+  z-index: 2;
+  max-width: 600px;
+  text-align: center;
+  padding: 0 2rem;
+  font-size: 16px;
+  line-height: 1.6;
 }
 
 .section2 {
@@ -828,4 +861,339 @@ body {
 .rht .point i {
   color: #fff;
   font-size: 27px;
+}
+
+@media (max-width: 1024px) {
+  .content {
+    width: 90%;
+    gap: 20px;
+    padding: 0 1.5rem;
+  }
+
+  .content h1 {
+    font-size: 7rem;
+  }
+
+  .content h4 {
+    font-size: 22px;
+  }
+
+  .content li {
+    font-size: 16px;
+  }
+
+  .section3 .top h1 {
+    font-size: 3rem;
+  }
+
+  #creativehead {
+    font-size: 8rem;
+  }
+
+  .section9 .top h1 {
+    font-size: 4rem;
+  }
+
+  .section9 .bottom h1 {
+    font-size: 8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .section1 {
+    align-items: center;
+    justify-content: center;
+    padding-top: 13vh;
+  }
+
+  .section1 img {
+    height: 100vh;
+    object-fit: cover;
+    opacity: 0.3;
+  }
+
+  .content {
+    position: relative;
+    top: auto;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    padding: 2rem 1.5rem;
+    text-align: center;
+  }
+
+  .content h4 {
+    font-size: 1rem;
+    letter-spacing: 1.5px;
+  }
+
+  .content h1 {
+    margin-top: 0;
+    font-size: 4rem;
+    text-align: center;
+    letter-spacing: -1px;
+  }
+
+  .content ul {
+    align-items: center;
+    padding-left: 0;
+    margin-top: 1.5rem;
+  }
+
+  .content li {
+    font-size: 0.95rem;
+    text-align: center;
+  }
+
+  .section1 p {
+    position: absolute;
+    bottom: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0 auto;
+    max-width: 85%;
+    font-size: 0.9rem;
+    text-align: center;
+    padding: 0 1rem;
+  }
+
+  .section2 {
+    height: auto;
+    padding: 4rem 0 3rem;
+  }
+
+  .content1 {
+    height: auto;
+    gap: 2.5rem;
+    padding: 2rem 1.5rem;
+    border-radius: 16px;
+  }
+
+  .content1 h1 {
+    font-size: 1.9rem;
+  }
+
+  .para {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .para p {
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .section3 {
+    height: auto;
+    padding-bottom: 3rem;
+  }
+
+  .section3 .top {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 3rem 1.5rem 1.5rem;
+    gap: 0.75rem;
+  }
+
+  .section3 .top h1 {
+    font-size: 2.2rem;
+  }
+
+  .section3 .top h5 {
+    font-size: 1.1rem;
+  }
+
+  .section3 .mid {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .mid-one,
+  .mid-two {
+    width: 100%;
+    transform: translateX(0);
+    height: 40vh;
+  }
+
+  .botom {
+    padding: 1.5rem 1.5rem 0;
+  }
+
+  .paras {
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  #paras1 {
+    width: 100%;
+  }
+
+  .forheading {
+    height: auto;
+    padding: 3rem 1rem;
+  }
+
+  #creativehead {
+    font-size: 2.4rem;
+    text-wrap: wrap;
+  }
+
+  .section4 {
+    height: auto;
+    padding: 3rem 1rem 4rem;
+  }
+
+  .section4-cont {
+    height: auto;
+    gap: 1.75rem;
+  }
+
+  .section4-cont h2 {
+    font-size: 2.6rem;
+  }
+
+  .section6 {
+    height: auto;
+    padding: 4rem 1rem 3rem;
+  }
+
+  .section6 h3 {
+    margin-left: 0;
+    align-self: center;
+  }
+
+  .prof {
+    flex-direction: column;
+    height: auto;
+    gap: 1.5rem;
+  }
+
+  .cardsp {
+    width: 100%;
+    height: auto;
+  }
+
+  .section7 {
+    height: auto;
+    padding: 4rem 1rem 4rem;
+  }
+
+  .pricecart {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .pricecart .left,
+  .pricecart .right {
+    width: 100%;
+    height: auto;
+    transform: none;
+    filter: none;
+    opacity: 1;
+  }
+
+  .list {
+    height: auto;
+    margin-left: 0;
+  }
+
+  .section8 {
+    height: auto;
+    padding: 4rem 1rem 5rem;
+  }
+
+  .container {
+    flex-direction: column;
+    padding: 2rem 1rem;
+    height: auto;
+  }
+
+  .container .lft,
+  .container .rht {
+    width: 100%;
+    height: auto;
+  }
+
+  .container .lft p {
+    width: 100%;
+  }
+
+  .rht .img {
+    width: 100%;
+    height: 260px;
+  }
+
+  .section9 {
+    height: auto;
+    padding-bottom: 4rem;
+  }
+
+  .section9 .top {
+    height: 60vh;
+    padding: 0 1rem;
+  }
+
+  .section9 .top h1 {
+    font-size: 2.4rem;
+    text-align: center;
+  }
+
+  .section9 .bottom {
+    position: static;
+    height: auto;
+    padding: 2rem 1rem 0;
+  }
+
+  .section9 .bottom h1 {
+    font-size: 3rem;
+    text-align: center;
+  }
+
+  .footercontent {
+    flex-direction: column;
+    height: auto;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .footercontent .left,
+  .footercontent .rht {
+    width: 100%;
+    justify-content: center;
+    padding: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .content {
+    padding: 1.5rem 1rem;
+  }
+
+  .content h4 {
+    font-size: 0.9rem;
+  }
+
+  .content h1 {
+    font-size: 3rem;
+    letter-spacing: -0.5px;
+  }
+
+  .content li {
+    font-size: 0.85rem;
+  }
+
+  .section1 p {
+    font-size: 0.85rem;
+    bottom: 6%;
+    padding: 0 1rem;
+  }
+
+  .section3 .top h1 {
+    font-size: 1.8rem;
+  }
+
+  .section4-cont h2 {
+    font-size: 2.2rem;
+  }
 }

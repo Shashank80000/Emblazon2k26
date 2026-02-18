@@ -170,7 +170,7 @@ export default function Home() {
         <img src="https://via.placeholder.com/1200x1000?text=Placeholder" alt="" />
         <div className="content">
           <h4>Design Agency®</h4>
-          <h1>Creative</h1>
+          <h1>Emblazon</h1>
           <ul type="none">
             <li>UX/UI Design</li>
             <li>Development</li>
