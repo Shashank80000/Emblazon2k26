@@ -9,12 +9,12 @@ const EventCard = ({ event }) => {
       {/* Image Section - dark blurred area */}
       <div className="event-card__image-area">
         <img
-          src={event.image || "/images/emblazon-logo.png"}
+          src={event.image || "/images/emblazon-logo.svg"}
           alt={event.title}
           className="event-card__image"
           loading="lazy"
           onError={(e) => {
-            e.currentTarget.src = "/images/emblazon-logo.png";
+            e.currentTarget.src = "/images/emblazon-logo.svg";
           }}
         />
 
