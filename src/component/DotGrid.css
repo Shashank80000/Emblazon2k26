@@ -1,0 +1,12 @@
+.dotgrid-root{position:absolute;inset:0;pointer-events:none;z-index:0}
+.dotgrid-canvas{width:100%;height:100%;display:block}
+
+/* Ensure canvas shows a black background behind the dots */
+.dotgrid-canvas, .dotgrid-root canvas, canvas.dotgrid-canvas, canvas {
+	background-color: #000000;
+}
+
+/* If DotGrid is rendered as a section wrapper, make sure its immediate wrapper fills and is black */
+.dotgrid-section-wrapper, .dotgrid-wrapper {
+	background: #000000;
+}
