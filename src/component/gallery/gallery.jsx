@@ -7,19 +7,20 @@ gsap.registerPlugin(Flip, ScrollTrigger);
 
 export default function Gallery() {
   const sectionRef = useRef(null);
-  const initRef = useRef(false);
+  const galleryRef = useRef(null);
 
   useEffect(() => {
-    // Guard against StrictMode double-invocation
-    if (initRef.current) return;
-    initRef.current = true;
+    const gallery = galleryRef.current;
+    const section = sectionRef.current;
+    if (!gallery || !section) return;
 
-    const galleryItems = document.querySelectorAll('.gallery div');
+    // Exact same logic as the reference site
+    const galleryItems = document.querySelectorAll('.gallery-page .gallery div');
 
     galleryItems.forEach((el) => el.classList.add('flip'));
 
     const state = Flip.getState(
-      ['.gallery div', '.gallery div .img'],
+      ['.gallery-page .gallery div', '.gallery-page .gallery div .img'],
       { props: 'borderRadius' }
     );
 
@@ -29,13 +30,17 @@ export default function Gallery() {
       scale: true,
       simple: true,
       scrollTrigger: {
-        trigger: sectionRef.current,
+        trigger: section,
         start: 'center center',
         end: '+=300%',
         scrub: 2,
         pin: true,
       },
     });
+
+    return () => {
+      ScrollTrigger.getAll().forEach((t) => t.kill());
+    };
   }, []);
 
   return (
@@ -48,7 +53,7 @@ export default function Gallery() {
       </section>
 
       <section className="gallery-container" ref={sectionRef}>
-        <div className="gallery">
+        <div className="gallery" ref={galleryRef}>
           <div></div>
           <div></div>
           <div></div>
