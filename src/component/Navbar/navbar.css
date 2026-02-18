@@ -86,28 +86,38 @@
   pointer-events: none; /* prevent this container from blocking center links on wide screens */
 }
 
-/* Hamburger Menu Button */
+/* Hamburger Menu Button (hidden on desktop, visible on small screens)
+   Single consolidated selector to avoid duplicate rules */
 .hamburger-menu {
   display: none;
+  position: fixed;
+  top: 0.5rem;
+  right: 1rem;
   flex-direction: column;
-  justify-content: space-around;
-  width: 30px;
-  height: 30px;
-  background: transparent;
-  border: none;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  width: auto;
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  padding: 8px 12px;
+  border-radius: 999px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.06);
   cursor: pointer;
-  padding: 0;
-  z-index: 1010;
+  z-index: 1400; /* very high so it's above other elements */
   pointer-events: auto; /* ensure hamburger remains clickable when visible */
 }
 
+/* hamburger-line inside floating pill */
 .hamburger-line {
-  width: 100%;
-  height: 3px;
-  background-color: white;
-  border-radius: 3px;
-  transition: all 0.3s ease;
-  transform-origin: center;
+    display: block;
+    width: 22px;
+    height: 2.5px;
+    background-color: #fff;
+    border-radius: 2px;
+    transition: all 0.25s ease;
 }
 
 .hamburger-line.open:nth-child(1) {
@@ -197,9 +207,9 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
     z-index: 1000;
     pointer-events: auto;
   }
@@ -210,37 +220,50 @@
     display: none;
   }
 
+  /* Floating rounded menu anchored under the hot-dog pill */
   .main-links.mobile-open {
     display: flex;
     position: fixed;
-    top: 0;
-    right: 0;
-    width: 280px;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.98);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    top: 4.2rem; /* just below the floating hamburger pill */
+    right: 1rem;
+    width: min(92vw, 320px);
+    max-width: 320px;
+    max-height: calc(100vh - 6rem);
+    background: linear-gradient(180deg, rgba(12,12,30,0.98) 0%, rgba(20,20,60,0.96) 100%) !important;
+    color: #fff !important;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
     justify-content: flex-start;
-    padding: 5rem 2rem 2rem;
-    gap: 0;
-    border: none;
-    border-radius: 0;
-    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.5);
-    z-index: 1005; /* ensure mobile menu is above the rounded navbar */
+    padding: 0.6rem;
+    gap: 0.2rem;
+    border: 1px solid rgba(255,255,255,0.04);
+    border-radius: 18px; /* pill-like floating menu */
+    box-shadow: 0 12px 38px rgba(0,0,0,0.45);
+    z-index: 1500; /* ensure mobile menu is above everything */
     pointer-events: auto;
-    overflow-y: auto;
+    overflow: auto;
+    transform-origin: top right;
+    animation: dropdown 220ms cubic-bezier(.22,.9,.34,1) both;
+  }
+
+  @keyframes dropdown {
+    from { opacity: 0; transform: translateY(-6px) scale(0.96); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
   }
 
   .main-links.mobile-open .nav-link {
     width: 100%;
-    padding: 1rem 0;
-    font-size: 16px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 0;
+    padding: 0.9rem 1rem;
+    font-size: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 8px;
     text-align: left;
     position: relative;
+    color: #fff !important;
+    display: block;
+    background: transparent;
   }
 
   .main-links.mobile-open .nav-link:hover {

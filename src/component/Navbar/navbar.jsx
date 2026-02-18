@@ -1,5 +1,6 @@
 import { useNavigate, NavLink } from 'react-router-dom';
-import { useCallback, useState } from 'react';
+import { useCallback, useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './navbar.css';
@@ -9,6 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Navbar() {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [portalContainer, setPortalContainer] = useState(null);
 
   const handleNav = useCallback((path) => {
     // Kill all GSAP ScrollTriggers and revert pin-spacer DOM changes
@@ -24,12 +26,34 @@ export default function Navbar() {
   }, [navigate]);
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+    setIsMenuOpen((prev) => {
+      const next = !prev;
+      // lock body scroll when menu opens
+      if (next) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+      }
+      return next;
+    });
   };
+
+  useEffect(() => {
+    const el = document.createElement('div');
+    document.body.appendChild(el);
+    setPortalContainer(el);
+    return () => {
+      document.body.removeChild(el);
+      document.body.style.overflow = '';
+    };
+  }, []);
 
   return (
     <>
-      {isMenuOpen && <div className="menu-backdrop" onClick={toggleMenu}></div>}
+      {(portalContainer && isMenuOpen) && (createPortal(
+        <div className="menu-backdrop" onClick={toggleMenu}></div>,
+        portalContainer
+      ))}
       <nav className="navbar">
         <div className="nav-left">
           <a className="nav-logo" onClick={() => handleNav('/')}>HMRITM</a>
@@ -54,16 +78,17 @@ export default function Navbar() {
       </nav>
 
       {/* Render mobile menu as a sibling so it's not trapped by navbar's stacking context */}
-      {isMenuOpen && (
-        <div className="main-links mobile-open" aria-hidden={!isMenuOpen}>
+      {(portalContainer && isMenuOpen) && (createPortal(
+        <div className="main-links mobile-open" aria-hidden={!isMenuOpen} role="menu">
           <NavLink to="/" className={({isActive}) => 'nav-link' + (isActive ? ' active' : '')} onClick={(e) => { e.preventDefault(); handleNav('/'); }}>Home</NavLink>
           <NavLink to="/gallery" className={({isActive}) => 'nav-link' + (isActive ? ' active' : '')} onClick={(e) => { e.preventDefault(); handleNav('/gallery'); }}>Gallery</NavLink>
           <NavLink to="/team" className={({isActive}) => 'nav-link' + (isActive ? ' active' : '')} onClick={(e) => { e.preventDefault(); handleNav('/team'); }}>Team</NavLink>
           <NavLink to="/events" className={({isActive}) => 'nav-link' + (isActive ? ' active' : '')} onClick={(e) => { e.preventDefault(); handleNav('/events'); }}>Events</NavLink>
           <NavLink to="/sponsors" className={({isActive}) => 'nav-link' + (isActive ? ' active' : '')} onClick={(e) => { e.preventDefault(); handleNav('/sponsors'); }}>Sponsors</NavLink>
           <NavLink to="/about" className={({isActive}) => 'nav-link' + (isActive ? ' active' : '')} onClick={(e) => { e.preventDefault(); handleNav('/about'); }}>About</NavLink>
-        </div>
-      )}
+        </div>,
+        portalContainer
+      ))}
     </>
   );
 }
