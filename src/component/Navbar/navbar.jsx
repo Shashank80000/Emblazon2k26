@@ -3,6 +3,7 @@ import { useCallback, useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import heroImage from '../../assets/fest/emblogo.png';
 
 import './navbar.css';
 
@@ -57,8 +58,9 @@ export default function Navbar() {
       ))}
       <nav className="navbar">
         <div className="nav-left">
-          <a className="nav-logo" onClick={() => handleNav('/')}> <img src= ""alt="HMRITM Logo" /> </a>
-        
+          <button className="nav-logo" onClick={() => handleNav('/')} aria-label="Go to home"> 
+            <img src={heroImage} alt="Emblazon 2k26 Logo" className="logo-img" /> 
+          </button>
         </div>
         <div className="nav-center">
           <div className="main-links">
@@ -79,7 +81,6 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Render mobile menu as a sibling so it's not trapped by navbar's stacking context */}
       {(portalContainer && isMenuOpen) && (createPortal(
         <div className="main-links mobile-open" aria-hidden={!isMenuOpen} role="menu">
           <NavLink to="/" className={({isActive}) => 'nav-link' + (isActive ? ' active' : '')} onClick={(e) => { e.preventDefault(); handleNav('/'); }}>Home</NavLink>
