@@ -3,6 +3,7 @@ import { useCallback, useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
 import './navbar.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -56,7 +57,8 @@ export default function Navbar() {
       ))}
       <nav className="navbar">
         <div className="nav-left">
-          <a className="nav-logo" onClick={() => handleNav('/')}>HMRITM</a>
+          <a className="nav-logo" onClick={() => handleNav('/')}> <img src= ""alt="HMRITM Logo" /> </a>
+        
         </div>
         <div className="nav-center">
           <div className="main-links">

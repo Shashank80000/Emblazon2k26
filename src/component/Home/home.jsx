@@ -2,6 +2,8 @@ import { useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './home.css';
+import heroImage from '../../assets/panda maam.jpeg';
+
 
 gsap.registerPlugin(ScrollTrigger);
 ScrollTrigger.config({ ignoreMobileResize: true });
@@ -175,36 +177,37 @@ export default function Home() {
       <div className="section1">
         <img src="https://via.placeholder.com/1200x1000?text=Placeholder" alt="" loading="lazy" decoding="async" />
         <div className="content">
-          <h4>Design Agency®</h4>
-          <h1>Creative</h1>
+          <h4>HMRITM 'S</h4>
+          <h1>Emblazon</h1>
           <ul type="none">
-            <li>UX/UI Design</li>
-            <li>Development</li>
-            <li>Problem Solving</li>
+            
+              <li> 2 Days 30+ Events </li>
+             <li>  1000+ Participants•</li>
+              <li>   One Epic Experienc •</li>
+              
           </ul>
         </div>
         <p>
-          For over a decade, we've partnered worldwide with founders to shape bold
-          identities that redefine markets.
+          More Than a Fest — It's a Legacy.
         </p>
       </div>
 
       <div className="section2">
         <div className="content1">
-          <h4>Profile</h4>
+          <h4>About Emblazon</h4>
           <h1>
-            We transform bold ideas into standout brands through strategy, design,
-            and marketing — all seamlessly integrated
+            Emblazon is the annual cultural fest of HMR Institute of Technology & Management,
+             celebrating creativity, talent, and youth energy.
           </h1>
           <div className="para">
             <p className="paragraph1">
-              From day one, our mission has been to craft timeless identities that
-              cut through the noise. Each year we collaborate with five teams to
-              ensure unrivaled attention and dedication
+             Emblazon is not just a fest, it is a platform where hidden talents shine, 
+             friendships are built, and unforgettable memories are created. From electrifying performances to thrilling competitions, 
+             every moment at Emblazon reflects the vibrant spirit of HMRITM.
             </p>
             <p className="paragraph2">
-              For over a decade, we've partnered worldwide with founders to shape
-              bold identities that redefine markets.
+            With exciting events, celebrity appearances, amazing prizes, and an energetic crowd,
+             Emblazon 2K26 promises to be bigger, louder, and more spectacular than ever before.
             </p>
           </div>
         </div>
@@ -238,21 +241,22 @@ export default function Home() {
       </div>
 
       <div className="forheading">
-        <h1 id="creativehead">Creative ® Studio Creative ® Studio</h1>
+        <h1 id="creativehead">Emblazon ® 2k26 ® Emblazon ® 2k26 </h1>
       </div>
 
       <div className="section4">
         <div className="section4-cont">
-          <h2 id="Branding">Branding</h2>
-          <h2 id="Design">Design</h2>
-          <h2 id="Marketing">Marketing</h2>
+          <h2 id="Branding">Lights</h2>
+          <h2 id="Design">Music</h2>
+          <h2 id="Marketing">Energy</h2>
         </div>
       </div>
 
       <div className="blank blank1"></div>
       <div className="main-blank">
-        <h6>Featured Works</h6>
+        <h6>Best Teacher of Hmr</h6>
         <div className="card card1">
+          <img src={heroImage} alt="Reisfel" />
           <h1>Reisfel</h1>
           <div className="fordate">
             <p>Branding</p>
@@ -260,6 +264,7 @@ export default function Home() {
           </div>
         </div>
         <div className="card card2">
+          <img src="path/to/your/image.jpg" alt="Delvyes" />
           <h1>Delvyes</h1>
           <div className="fordate">
             <p>Branding</p>
@@ -267,6 +272,7 @@ export default function Home() {
           </div>
         </div>
         <div className="card card3">
+          <img src="path/to/your/image.jpg" alt="Clairvy" />
           <h1>Clairvy</h1>
           <div className="fordate">
             <p>Branding</p>
@@ -274,6 +280,7 @@ export default function Home() {
           </div>
         </div>
         <div className="card card4">
+          <img src="path/to/your/image.jpg" alt="Racely" />
           <h1>Racely</h1>
           <div className="fordate">
             <p>Branding</p>
@@ -283,7 +290,7 @@ export default function Home() {
       </div>
 
       <div className="section6">
-        <h3>Trusted by Clients</h3>
+        <h3>Our Partners</h3>
 
         <div className="prof">
           <div className="cardsp cardsp1">
@@ -314,12 +321,12 @@ export default function Home() {
       </div>
 
       <div className="section7">
-        <h3>Pricing Plans</h3>
+        <h3>Emblazon Plans</h3>
         <p>Clear, transparent pricing for every stage.</p>
         <div className="pricecart">
           <div className="left">
             <h4>Initial</h4>
-            <h1>$750</h1>
+            <h1> 0</h1>
             <p>
               Perfect for entrepreneurs or small brands building their identity
               from scratch.
@@ -339,7 +346,7 @@ export default function Home() {
           </div>
           <div className="right">
             <h4>Custom Project</h4>
-            <h1>$1.499</h1>
+            <h1>00</h1>
             <p>
               Ideal for established brands or corporations needing full-scale
               strategic support.
@@ -372,6 +379,7 @@ export default function Home() {
               stories that resonate, and digital experiences built to perform.
             </p>
             <h2 className="horn">
+
               Choosing the right studio matters — especially when your brand needs
               to stand out, move, and perform. We combine design, motion, and web
               to deliver work that makes an instant impact and keeps your audience
@@ -380,12 +388,14 @@ export default function Home() {
           </div>
           <div className="rht">
             <h1>Metrics</h1>
-            <div className="img"></div>
+            
+          
             <div className="imgbottom">
               <div className="peop peop1"></div>
               <div className="peop peop2"></div>
               <div className="peop peop3"></div>
               <p>2M+ Happy Clients</p>
+              
             </div>
           </div>
         </div>
@@ -397,7 +407,7 @@ export default function Home() {
           <button>Start</button>
         </div>
         <div className="bottom">
-          <h1>Veauly Studio</h1>
+          <h1>HMRITM</h1>
           <div className="footercontent">
             <div className="left">
               <a href="#">Nicodev</a>
