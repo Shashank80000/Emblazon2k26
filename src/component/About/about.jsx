@@ -1,7 +1,42 @@
+import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/all';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function About() {
   const videoSrc = new URL('../../assets/fest/Hmritm.mp4', import.meta.url).href;
+  const contentRef = useRef(null);
+
+  useEffect(() => {
+    const el = contentRef.current;
+    if (!el) return;
+
+    const children = el.querySelectorAll('.about-animate');
+
+    gsap.set(children, { opacity: 0, y: 60 });
+
+    gsap.to(children, {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      ease: 'power3.out',
+      stagger: 0.15,
+      scrollTrigger: {
+        trigger: el,
+        start: 'top 80%',
+        end: 'top 30%',
+        toggleActions: 'play none none reverse',
+      },
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach((t) => {
+        if (t.trigger === el) t.kill();
+      });
+    };
+  }, []);
 
   return (
     <div style={{ position: 'relative', width: '100%', overflowX: 'hidden', background: '#000' }}>
@@ -39,7 +74,25 @@ export default function About() {
       />
 
       {/* spacer – first full screen is just the video */}
-      <div style={{ height: '100dvh', position: 'relative', zIndex: 2 }} />
+      <div style={{ height: '100dvh', position: 'relative', zIndex: 2, display: 'flex', alignItems: 'flex-end', justifyContent: 'center', paddingBottom: '2rem' }}>
+        <div style={{ textAlign: 'center', animation: 'aboutBounce 2s ease-in-out infinite', color: 'rgba(255,255,255,0.7)', fontSize: 'clamp(0.8rem, 2vw, 0.95rem)', letterSpacing: '0.15em', textTransform: 'uppercase' }}>
+          <span>Scroll to explore</span>
+          <div style={{ marginTop: '0.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2px' }}>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ opacity: 0.5, marginTop: '-12px' }}>
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </div>
+        </div>
+        <style>{`
+          @keyframes aboutBounce {
+            0%, 100% { transform: translateY(0); opacity: 0.7; }
+            50% { transform: translateY(-12px); opacity: 1; }
+          }
+        `}</style>
+      </div>
 
       {/* sticky about box – slides up from bottom, sticks at top: 20vh */}
       <div
@@ -55,6 +108,7 @@ export default function About() {
         }}
       >
         <div
+          ref={contentRef}
           style={{
             width: '100%',
             maxWidth: '1100px',
@@ -71,22 +125,23 @@ export default function About() {
             boxShadow: '0 8px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.08)'
           }}
         >
-          <h1 style={{ marginBottom: '1rem', color: '#ff7eb3', fontSize: 'clamp(1.5rem, 6vw, 2.5rem)', textShadow: '0 2px 12px rgba(255,126,179,0.35)' }}>About</h1>
-          <p style={{ marginBottom: '0.9rem' }}>
+          <h1 className="about-animate" style={{ marginBottom: '1rem', color: '#ff7eb3', fontSize: 'clamp(1.5rem, 6vw, 2.5rem)', textShadow: '0 2px 12px rgba(255,126,179,0.35)' }}>About</h1>
+          <p className="about-animate" style={{ marginBottom: '0.9rem' }}>
             HMR Institute of Technology &amp; Management was established in the year 2002. It is spread over a sprawling lush green campus 5 acres of land.
           </p>
-          <p style={{ marginBottom: '0.9rem' }}>
+          <p className="about-animate" style={{ marginBottom: '0.9rem' }}>
             HMRITM exists for nurturing the Technical Spirit – conceived in 2002, to provide exceptional facilities for students of Engineering and Technology, the HMR Institute of Technology and Management boasts of being among the reputed institutes even in its early stages. The Institute recognises the need for bringing up a new age cerebral workforce in today&apos;s highly competitive environment.
           </p>
-          <p style={{ marginBottom: '0.9rem' }}>
+          <p className="about-animate" style={{ marginBottom: '0.9rem' }}>
             The name HMR stands for the founders of this institution Late Sh. Hiralal, Late Smt. Mohan Devi and Late Smt. Rita Gupta. The Institute provides an atmosphere that ensures academic excellence and industry exposure that helps equip the students with the technical skills and emotional intelligence to successfully grapple with the complexities of a dynamic technology-driven environment. This endeavour is greatly aided by the local location of the institute in Delhi that is home to several corporate houses and industries.
           </p>
-          <p style={{ marginBottom: '1rem' }}>
+          <p className="about-animate" style={{ marginBottom: '1rem' }}>
             The institute stands for quality embedded higher education at par with global standard and an excellent learning environment backed by innovative state-of-the-art infrastructure. Further, it aims to add greater value to the world of crucial engineering developments and technological breakthroughs through an active focus on research and development activities. With a bird&apos;s eye-view of all-encompassing development, it strives to achieve faster progress for students, and for itself.
           </p>
-          <Link to="/" style={{ color: '#ffb347', fontWeight: 600, textDecoration: 'none' }}>← Back to Home</Link>
+          <Link className="about-animate" to="/" style={{ color: '#ffb347', fontWeight: 600, textDecoration: 'none', display: 'inline-block' }}>← Back to Home</Link>
         </div>
       </div>
     </div>
   );
 }
+

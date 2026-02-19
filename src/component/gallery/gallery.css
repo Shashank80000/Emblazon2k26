@@ -22,6 +22,42 @@
 
 .gallery-page .header-container {
   height: 70vh;
+  position: relative;
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: clamp(0.8rem, 2vw, 0.95rem);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  animation: galleryBounce 2s ease-in-out infinite;
+}
+
+.scroll-hint__arrows {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+@keyframes galleryBounce {
+
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+    opacity: 0.7;
+  }
+
+  50% {
+    transform: translateX(-50%) translateY(-12px);
+    opacity: 1;
+  }
 }
 
 .gallery-page .title {
@@ -70,25 +106,25 @@
 
 /* ── Individual tile backgrounds ── */
 .gallery-page .gallery div:nth-child(1) {
-  background-image: url("../../assets/fest/1.jpeg");
+  background-image: url("../../assets/fest/01.JPG");
   background-position: center center;
   background-size: cover;
 }
 
 .gallery-page .gallery div:nth-child(2) {
-  background-image: url("../../assets/fest/2.jpeg");
+  background-image: url("../../assets/fest/02.JPG");
   background-position: center center;
   background-size: cover;
 }
 
 .gallery-page .gallery div:nth-child(3) {
-  background-image: url("../../assets/fest/3.jpeg");
+  background-image: url("../../assets/fest/03.JPG");
   background-position: center center;
   background-size: cover;
 }
 
 .gallery-page .gallery div:nth-child(4) {
-  background-image: url("../../assets/fest/4.jpeg");
+  background-image: url("../../assets/fest/04.JPG");
   background-position: center center;
   background-size: cover;
 }
@@ -106,25 +142,25 @@
 }
 
 .gallery-page .gallery div:nth-child(6) {
-  background-image: url("../../assets/fest/6.jpeg");
+  background-image: url("../../assets/fest/06.jpg");
   background-position: center center;
   background-size: cover;
 }
 
 .gallery-page .gallery div:nth-child(7) {
-  background-image: url("../../assets/fest/7.jpeg");
+  background-image: url("../../assets/fest/07.jpg");
   background-position: center center;
   background-size: cover;
 }
 
 .gallery-page .gallery div:nth-child(8) {
-  background-image: url("../../assets/fest/8.jpeg");
+  background-image: url("../../assets/fest/015.jpeg");
   background-position: center center;
   background-size: cover;
 }
 
 .gallery-page .gallery div:nth-child(9) {
-  background-image: url("../../assets/fest/9.jpeg");
+  background-image: url("../../assets/fest/09.jpg");
   background-position: center center;
   background-size: cover;
 }
