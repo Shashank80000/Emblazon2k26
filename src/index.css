@@ -14,4 +14,19 @@ body {
   text-rendering: optimizeLegibility;
   background-color: #050510;
   color: #fff;
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="%23111" stroke="%23a855f7" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M4 4l16 5.333L12 12l-2.667 8L4 4z" /></svg>') 4 4, auto;
+}
+
+/* Make sure the pointer applies to interactive elements if the browser resets it */
+a,
+button,
+[role="button"],
+input,
+select,
+textarea,
+.nav-link,
+.register-btn,
+.footer-logo,
+.social-icon-img {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="%23111" stroke="%2338bdf8" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M4 4l16 5.333L12 12l-2.667 8L4 4z" /></svg>') 4 4, pointer !important;
 }

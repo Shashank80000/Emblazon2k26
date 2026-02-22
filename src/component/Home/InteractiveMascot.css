@@ -1,0 +1,58 @@
+.mascot-container {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 140px;
+    z-index: 50;
+    pointer-events: none;
+    filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.4));
+    transition: transform 0.3s ease;
+}
+
+.mascot-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.mascot-svg.happy {
+    animation: floatMascot 4s infinite ease-in-out;
+}
+
+.mascot-svg.excited {
+    animation: jumpMascot 0.8s infinite ease-in-out;
+}
+
+@keyframes floatMascot {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+@keyframes jumpMascot {
+
+    0%,
+    100% {
+        transform: translateY(0) scale(1, 1);
+    }
+
+    50% {
+        transform: translateY(-15px) scale(0.95, 1.05);
+    }
+}
+
+@media (max-width: 768px) {
+    .mascot-container {
+        bottom: 10px;
+        left: auto;
+        right: 15px;
+        width: 100px;
+        opacity: 0.9;
+    }
+}

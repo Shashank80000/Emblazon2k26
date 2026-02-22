@@ -10,6 +10,7 @@ import Gallery from './component/gallery/gallery';
 import Team from './component/Team/team';
 import Sponsors from './component/sponsors/sponsors';
 import LoadingScreen from './component/LoadingScreen/LoadingScreen';
+import Footer from './component/Footer/Footer';
 
 function AppContent() {
   const [appState, setAppState] = useState('loading');
@@ -31,6 +32,7 @@ function AppContent() {
         <Route path="/team" element={<Team />} />
         <Route path="/sponsors" element={<Sponsors />} />
       </Routes>
+      <Footer />
     </LayoutGroup>
   );
 }
