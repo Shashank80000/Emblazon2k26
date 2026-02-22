@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { LayoutGroup, AnimatePresence } from 'motion/react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ScrollToTop from './component/ScrollToTop';
 import Navbar from './component/Navbar/navbar';
@@ -11,14 +12,16 @@ import Sponsors from './component/sponsors/sponsors';
 import LoadingScreen from './component/LoadingScreen/LoadingScreen';
 
 function AppContent() {
-  const [appState, setAppState] = useState('loading'); // 'loading', 'fading', 'ready'
+  const [appState, setAppState] = useState('loading');
 
   return (
-    <>
+    <LayoutGroup>
       <ScrollToTop />
-      {appState !== 'ready' && (
-        <LoadingScreen appState={appState} setAppState={setAppState} />
-      )}
+      <AnimatePresence>
+        {appState !== 'ready' && (
+          <LoadingScreen key="loading" appState={appState} setAppState={setAppState} />
+        )}
+      </AnimatePresence>
       <Navbar appState={appState} />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -28,7 +31,7 @@ function AppContent() {
         <Route path="/team" element={<Team />} />
         <Route path="/sponsors" element={<Sponsors />} />
       </Routes>
-    </>
+    </LayoutGroup>
   );
 }
 

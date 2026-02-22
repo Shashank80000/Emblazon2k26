@@ -1,7 +1,7 @@
 import { useNavigate, NavLink } from 'react-router-dom';
 import { useCallback, useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import heroImage from '../../assets/fest/logo.svg';
@@ -102,18 +102,21 @@ export default function Navbar({ appState }) {
         <div className="menu-backdrop" onClick={toggleMenu}></div>,
         portalContainer
       ))}
-      <nav className={`navbar ${isScrolled ? 'hidden' : ''} ${appState !== 'ready' ? 'navbar-transparent' : ''}`}>
+      <nav className={`navbar ${(isScrolled && appState === 'ready') ? 'hidden' : ''} ${appState !== 'ready' ? 'navbar-transparent' : ''}`}>
         <div className="nav-left">
           <button className="nav-logo" onClick={() => handleNav('/')} aria-label="Go to home">
-            {appState !== 'loading' && (
-              <motion.img
-                layoutId="flight-logo"
-                src={heroImage}
-                alt="Emblazon 2k26 Logo"
-                className="logo-img"
-                transition={{ type: "spring", stiffness: 60, damping: 14, mass: 0.8 }}
-              />
-            )}
+            <AnimatePresence mode="wait">
+              {appState === 'ready' && (
+                <motion.img
+                  key="navbar-logo"
+                  layoutId="flight-logo"
+                  src={heroImage}
+                  alt="Emblazon 2k26 Logo"
+                  className="logo-img"
+                  transition={{ type: "spring", stiffness: 60, damping: 14, mass: 0.8 }}
+                />
+              )}
+            </AnimatePresence>
           </button>
         </div>
         <div className="nav-center">

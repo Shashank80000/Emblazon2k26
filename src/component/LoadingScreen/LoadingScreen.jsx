@@ -1,25 +1,27 @@
-import { useEffect } from 'react'
-import { motion } from 'motion/react'
-import CircularText from './CircularText'
-import logo from '../../assets/fest/logo.svg'
-import './LoadingScreen.css'
+import { useEffect } from 'react';
+import { motion } from 'motion/react';
+import CircularText from './CircularText';
+import logo from '../../assets/fest/logo.svg';
+import './LoadingScreen.css';
 
 function LoadingScreen({ appState, setAppState }) {
 
     useEffect(() => {
-        // Trigger fade out on the background, while simultaneously launching the logo to navbar
-        const timer = setTimeout(() => {
-            setAppState('fading')
-            setTimeout(() => {
-                setAppState('ready')
-            }, 600) // Wait for fade out animation
-        }, 2200)
+        if (appState === 'loading') {
+            const timer = setTimeout(() => {
+                setAppState('ready');
+            }, 2200);
 
-        return () => clearTimeout(timer)
-    }, [setAppState])
+            return () => clearTimeout(timer);
+        }
+    }, [appState, setAppState]);
 
     return (
-        <div className={`loading-screen ${appState === 'fading' ? 'fade-out' : ''}`}>
+        <motion.div
+            className="loading-screen"
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
+        >
             <div className="loading-content">
                 {/* Outer Circle */}
                 <div className="loading-circle-outer">
@@ -44,18 +46,20 @@ function LoadingScreen({ appState, setAppState }) {
                     <div className="loading-logo-wrapper">
                         {appState === 'loading' && (
                             <motion.img
+                                key="loading-logo"
                                 layoutId="flight-logo"
                                 src={logo}
                                 alt="Emblazon Logo"
                                 className="loading-logo"
-                                transition={{ type: "spring", stiffness: 60, damping: 14, mass: 0.8 }}
+                                transition={{ layout: { type: "spring", stiffness: 60, damping: 14, mass: 0.8 } }}
                             />
                         )}
                     </div>
                 </div>
+
             </div>
-        </div>
-    )
+        </motion.div>
+    );
 }
 
-export default LoadingScreen
+export default LoadingScreen;
