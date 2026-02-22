@@ -123,7 +123,7 @@ export default function Gallery() {
           <p>Where every frame tells a story.</p>
         </div>
         <div className="scroll-hint">
-          <span>Keep Scolling!</span>
+          <span>Keep Scrolling!</span>
           <div className="scroll-hint__arrows">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <polyline points="6 9 12 15 18 9" />
@@ -163,7 +163,7 @@ export default function Gallery() {
             autoRotate={true}
             autoRotateSpeed={80}
             pointerFollow={false}
-            overlayBlurColor="#0b1018"
+            overlayBlurColor="#050510"
             fit={0.85}
             minRadius={700}
           />

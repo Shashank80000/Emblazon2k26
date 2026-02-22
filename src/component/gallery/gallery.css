@@ -196,7 +196,7 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  background: #0b1018;
+  background: transparent;
 }
 
 .gallery-page .dome-section__title {
