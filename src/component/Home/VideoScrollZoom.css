@@ -1,0 +1,189 @@
+/* ======================================================
+   VideoScrollZoom — Canvas text-mask + scroll zoom
+   ====================================================== */
+
+/* ── Outer: sets the scroll height budget ── */
+.vsz-outer {
+  position: relative;
+  height: 300vh;
+  width: 100%;
+  z-index: 10;
+}
+
+/* ── Sticky viewport frame ── */
+.vsz-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background: #030308;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Scroll progress bar (top edge) ── */
+.vsz-progress-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #8a2be2, #ec4899, #38bdf8);
+  transform-origin: left center;
+  z-index: 50;
+  box-shadow: 0 0 10px rgba(138, 43, 226, 0.8);
+}
+
+/* ── Phase 1: Canvas wrapper (gets CSS scale from scroll) ── */
+.vsz-canvas-wrapper {
+  position: absolute;
+  inset: 0;
+  transform-origin: center center;
+  will-change: transform, opacity;
+  z-index: 2;
+}
+
+.vsz-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* ── Phase 2: Full-quality video wrapper ── */
+.vsz-fullvideo-wrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  will-change: opacity;
+}
+
+.vsz-fullvideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Cinematic letterbox bars ── */
+.vsz-bar {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  background: #030308;
+  z-index: 10;
+  transition: height 0.05s linear;
+}
+
+.vsz-bar-top {
+  top: 0;
+}
+
+.vsz-bar-bottom {
+  bottom: 0;
+}
+
+/* ── "Scroll to continue" label over full video ── */
+.vsz-continue-hint {
+  position: absolute;
+  bottom: 6vh;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  pointer-events: none;
+}
+
+.vsz-continue-badge {
+  display: inline-block;
+  padding: 0.45rem 1.4rem;
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 100px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.75);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  white-space: nowrap;
+}
+
+/* ── Initial scroll-hint chevrons ── */
+.vsz-scroll-hint {
+  position: absolute;
+  bottom: 5vh;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  pointer-events: none;
+}
+
+.vsz-scroll-hint p {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+  margin: 0;
+}
+
+.vsz-chevrons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+.vsz-chevrons span {
+  display: block;
+  width: 16px;
+  height: 16px;
+  border-right: 2px solid rgba(255, 255, 255, 0.35);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.35);
+  transform: rotate(45deg);
+  animation: chevronBounce 1.6s ease-in-out infinite;
+}
+
+.vsz-chevrons span:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.vsz-chevrons span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.vsz-chevrons span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes chevronBounce {
+
+  0%,
+  100% {
+    opacity: 0.15;
+    transform: rotate(45deg) translate(-3px, -3px);
+  }
+
+  50% {
+    opacity: 0.85;
+    transform: rotate(45deg) translate(3px, 3px);
+  }
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .vsz-outer {
+    height: 250vh;
+  }
+
+  .vsz-continue-badge {
+    font-size: 0.68rem;
+    padding: 0.4rem 1rem;
+  }
+}
