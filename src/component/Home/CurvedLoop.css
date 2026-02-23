@@ -10,20 +10,28 @@
     pointer-events: auto;
     z-index: 5;
     opacity: 0.15;
+    overflow: hidden;
 }
 
 .curved-loop-svg {
     user-select: none;
     width: 100%;
     aspect-ratio: 100 / 12;
-    overflow: visible;
+    overflow: hidden;
+    /* clip at SVG boundary — never bleed out */
     display: block;
     font-size: 6rem;
     fill: #ffffff;
-    user-select: none;
     -moz-user-select: none;
     -webkit-user-select: none;
     font-weight: 700;
     text-transform: uppercase;
     line-height: 1;
+}
+
+/* ── Hide decorative curved marquee on mobile — it overflows on narrow screens ── */
+@media (max-width: 768px) {
+    .curved-loop-jacket {
+        display: none;
+    }
 }

@@ -6,6 +6,8 @@
   display: flex;
   flex-direction: column;
   position: relative;
+  overflow-x: hidden;
+  /* prevent horizontal scroll from CurvedLoop / LogoLoop */
   /* overflow:hidden removed — breaks position:sticky inside VideoScrollZoom */
 }
 
@@ -787,5 +789,140 @@
 
   .glimpses-section {
     padding: 4rem 4% 5rem;
+  }
+}
+
+/* ═══════════════════════════════════════════
+   HOME PAGE — RESPONSIVE
+   Breakpoints: 768px (tablet) · 480px (mobile)
+   ═══════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+
+  .hero-section {
+    height: 100svh;
+  }
+
+  .hero-content {
+    padding: 0 6%;
+    width: 100%;
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-logo-wrapper {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-text-image {
+    max-width: 92vw;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(0.7rem, 3.5vw, 1rem);
+    letter-spacing: 0.15em;
+    margin-top: 1.2rem;
+  }
+
+  /* clip social logo strip — prevents it from overflowing the hero */
+  .hero-social-loop {
+    overflow: hidden !important;
+    max-width: min(90vw, 400px) !important;
+  }
+
+  /* ── CurvedLoop text strip — reduce size on mobile ── */
+  .curved-loop-section {
+    overflow: hidden;
+  }
+
+  /* ── Scroll-stack heading ── */
+  .scroll-stack-section {
+    padding-top: 3rem;
+  }
+
+  .scroll-stack-heading h2 {
+    font-size: clamp(1.6rem, 6vw, 2.4rem);
+  }
+
+  .scroll-stack-heading p {
+    font-size: 0.9rem;
+  }
+
+  /* ── Stat boxes in about section ── */
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .stat-item {
+    padding: 1.5rem 1rem;
+  }
+
+  /* ── About box ── */
+  .about-emblazon-content {
+    padding: 2rem 1.5rem;
+    border-radius: 16px;
+  }
+
+  /* ── Glimpses header ── */
+  .glimpses-title {
+    font-size: clamp(1.6rem, 6vw, 2.4rem);
+  }
+}
+
+@media (max-width: 480px) {
+
+  /* ── Hero ── */
+  .hero-text-image {
+    max-width: 96vw;
+  }
+
+  .hero-subtitle {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+  }
+
+  /* ── Scroll-stack heading ── */
+  .scroll-stack-heading {
+    padding: 0 1rem;
+    text-align: center;
+  }
+
+  .scroll-stack-heading h2 {
+    font-size: clamp(1.4rem, 7vw, 2rem);
+  }
+
+  /* ── Stats ── */
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .stat-value {
+    font-size: clamp(1.6rem, 6vw, 2.2rem);
+  }
+
+  /* ── About section ── */
+  .about-emblazon-section {
+    padding: 4rem 4%;
+  }
+
+  .about-emblazon-content {
+    padding: 1.5rem 1rem;
+  }
+
+  /* ── Glimpses ── */
+  .glimpses-grid {
+    columns: 2;
+    column-gap: 0.6rem;
+  }
+
+  .glimpse-item {
+    margin-bottom: 0.6rem;
+    border-radius: 10px;
+  }
+
+  .glimpses-header {
+    margin-bottom: 2rem;
   }
 }
